@@ -51,7 +51,6 @@ export class DialogAddUserComponent {
     console.log('Current user: ', this.user);
     this.loading = true;
     addDoc(this.getUsersRef(), this.user.toJSON()).then((result) => {
-      console.log('Diese ', result);
       this.loading = false;
       this.dialogRef.close();
     })
