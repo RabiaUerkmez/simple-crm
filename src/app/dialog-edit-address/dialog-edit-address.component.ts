@@ -25,7 +25,7 @@ import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
   styleUrl: './dialog-edit-address.component.scss'
 })
 export class DialogEditAddressComponent {
-  user!: User;
+  user = new User();
   loading = false;
   userId!: string;
 

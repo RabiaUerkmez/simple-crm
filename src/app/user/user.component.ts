@@ -25,7 +25,7 @@ export class UserComponent {
   unsubUserList;
 
   public dialog = inject(MatDialog);
-  public firestore: Firestore = inject(Firestore);
+  firestore: Firestore = inject(Firestore);
 
   constructor() {
     this.unsubUserList = this.subUserList();
