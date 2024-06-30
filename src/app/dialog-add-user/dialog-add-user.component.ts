@@ -48,7 +48,6 @@ export class DialogAddUserComponent {
 
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
-    console.log('Current user: ', this.user);
     this.loading = true;
     addDoc(this.getUsersRef(), this.user.toJSON()).then((result) => {
       this.loading = false;
