@@ -9,7 +9,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms'
-import { Firestore, collection, doc, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 

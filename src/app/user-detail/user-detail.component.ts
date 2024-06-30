@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, collectionData, doc, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, collection, doc, onSnapshot } from '@angular/fire/firestore';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user.class';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,7 +22,7 @@ export class UserDetailComponent {
   userId = '';
   user: User = new User();
 
-
+  public dialog = inject(MatDialog);
   firestore: Firestore = inject(Firestore);
 
   constructor(private route: ActivatedRoute) {
@@ -39,11 +42,14 @@ export class UserDetailComponent {
   }
 
   editName() {
+    this.dialog.open(DialogEditUserComponent);
 
   }
 
   editMenu() {
-
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = this.user;
   }
+
 
 }

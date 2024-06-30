@@ -53,11 +53,10 @@ export class UserComponent {
 
   openDialog() {
     this.dialog.open(DialogAddUserComponent)
-
   }
 
   ngOnDestroy() {
-    this.unsubUserList();
+    this.unsubUserList;
   }
 
 }
