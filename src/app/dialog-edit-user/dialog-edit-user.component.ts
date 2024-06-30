@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { User } from '../../models/user.class';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -31,17 +32,19 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   styleUrl: './dialog-edit-user.component.scss'
 })
 export class DialogEditUserComponent {
-  user!: User;
+  user: User = new User();
   loading = false;
-
   birthDate!: Date;
+  userId!: string;
+
+  firestore: Firestore = inject(Firestore);
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>) {
 
   }
 
-  saveUser() {
-    console.log('speicher den Namen');
+  async saveUser() {
+    await setDoc(doc(collection(this.firestore, 'users'), this.userId), this.user.toJSON());
     this.dialogRef.close();
   }
 }
