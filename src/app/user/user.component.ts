@@ -40,7 +40,6 @@ export class UserComponent {
           ...element.data(),
           id: element.id,
         };
-        // console.log('Alles was ich brauch: ', userData, element.id)
         this.allUsers.push(new User(userData));
       });
     });

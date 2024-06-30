@@ -59,7 +59,4 @@ export class DialogAddUserComponent {
     return collection(this.firestore, 'users');
   }
 
-  // getSingleUserId(docId:string) {
-  //   return doc(collection(this.firestore, 'users'), docId)
-  // }
 }

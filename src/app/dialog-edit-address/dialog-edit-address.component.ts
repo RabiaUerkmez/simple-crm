@@ -34,9 +34,12 @@ export class DialogEditAddressComponent {
   constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>) {
 
   }
-  async saveUser() {
-    await setDoc(doc(collection(this.firestore, 'users'), this.userId), this.user.toJSON());
-    this.dialogRef.close();
+  saveUser() {
+    this.loading = true;
+    setDoc(doc(collection(this.firestore, 'users'), this.userId), this.user.toJSON()).then((result) => {
+      this.loading = false;
+      this.dialogRef.close();      
+    })
   }
 }
 

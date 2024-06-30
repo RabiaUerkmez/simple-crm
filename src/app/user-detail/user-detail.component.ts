@@ -29,7 +29,6 @@ export class UserDetailComponent {
     this.route.params.subscribe(params => {
       this.userId = params['id'];
       console.log('Test ID:', this.userId);
-
       this.getUser();
     });
   }
